@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$omnirio-primary: mat-palette($mat-green, 900, 500, 200);
+$omnirio-accent: mat-palette($mat-indigo, A200, A100, A400);
+$omnirio-warn: mat-palette($mat-red);
+
+$primary: mat-color($omnirio-primary);
+
+$omnirio-light-theme: mat-light-theme(
+  $omnirio-primary,
+  $omnirio-accent,
+  $omnirio-warn
+);
+
+@include angular-material-theme($omnirio-light-theme);
+
+.mat-snack-bar-container {
+  background: $primary;
+}

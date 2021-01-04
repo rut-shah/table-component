@@ -1,0 +1,75 @@
+<div class="row dashboard-container">
+  <div class="col-sm-12">
+    <div class="row my-4">
+      <h1 class="mx-auto">Inventory Management</h1>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-sm-12">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="filterData($event)" placeholder="Search the data" #input>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="mat-elevation-z8">
+          <table 
+            mat-table
+            [dataSource]="dataSource"
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="reorder($event)"
+            matSort>
+        
+            <ng-container matColumnDef="name">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Product Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="sku">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> SKU </th>
+              <td mat-cell *matCellDef="let element"> {{element.sku}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="price">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="stock">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Current Stock </th>
+              <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="noOfSales">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Total Sales </th>
+              <td mat-cell *matCellDef="let element"> {{element.noOfSales}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="active">
+              <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Product Status </th>
+              <td mat-cell *matCellDef="let element; let i = index"> 
+                <mat-select [value]="element.active" (selectionChange)="updateStatus($event, i)">
+                  <mat-option value="true">Active</mat-option>
+                  <mat-option value="false">Inactive</mat-option>
+                </mat-select>
+              </td>
+            </ng-container>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter value of "{{input.value}}"</td>
+            </tr>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
