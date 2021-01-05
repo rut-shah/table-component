@@ -22,7 +22,11 @@ router.post('/api/login', (req, res, next) => {
   }
 });
 
-router.get('/api/inventoryData',(req, res) => {
+router.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
+router.get('/api/inventoryData', (req, res) => {
   const data = require(INVENTORY_DATA);
   res.status(201).json({
     message: 'Inventory Data',
@@ -30,7 +34,7 @@ router.get('/api/inventoryData',(req, res) => {
   });
 });
 
-router.post('/api/updateStatus',(req, res) => {
+router.post('/api/updateStatus', (req, res) => {
   const index = parseInt(req.body.index);
   const newData = req.body.data;
   const data = require(INVENTORY_DATA);
