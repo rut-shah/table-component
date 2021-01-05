@@ -4,7 +4,7 @@ const routerConfig = require('./routes/route-config');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
-const whitelist = ['http://localhost:4200'];
+const whitelist = ['http://localhost:4200', 'https://tablecomponent.herokuapp.com'];
 
 app.use(bodyParser.json());
 app.use(helmet());
