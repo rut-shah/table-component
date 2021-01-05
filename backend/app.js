@@ -29,4 +29,7 @@ app.use((req, res, next) => {
 
 app.use(routerConfig);
 
+const distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 module.exports = app;

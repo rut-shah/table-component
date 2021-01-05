@@ -3,16 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "cd backend && node server.js",
     "start:backend": "npm run build && cd backend && node server.js && cd ../ && ng serve",
     "start:ng": "ng serve -o --port=4200",
     "build": "npm install && cd ./backend && npm install",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~11.0.5",
+    "@angular/compiler-cli": "~11.0.5",
     "@angular/animations": "~11.0.5",
     "@angular/cdk": "^11.0.3",
     "@angular/common": "~11.0.5",
@@ -26,12 +29,15 @@
     "bootstrap": "^4.5.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.3.1",
+    "nodemon": "^2.0.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.5",
-    "@angular/cli": "~11.0.5",
-    "@angular/compiler-cli": "~11.0.5",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
