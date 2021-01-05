@@ -1,0 +1,18 @@
+
+{
+  "name": "Table Component",
+  "description": "Table Component",
+  "keywords": [
+    "MEAN",
+    "Angular",
+    "Node"
+  ],
+  "repository": "https://github.com/rutpshah/table-component",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
