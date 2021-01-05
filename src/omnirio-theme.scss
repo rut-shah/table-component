@@ -5,6 +5,8 @@ $omnirio-primary: mat-palette($mat-green, 900, 500, 200);
 $omnirio-accent: mat-palette($mat-indigo, A200, A100, A400);
 $omnirio-warn: mat-palette($mat-red);
 
+$white: #ffffff;
+
 $primary: mat-color($omnirio-primary);
 
 $omnirio-light-theme: mat-light-theme(

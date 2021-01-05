@@ -56,7 +56,7 @@ export class DashboardComponent {
     }).subscribe((response) => {
       console.log(response);
       this._snackBar.openFromComponent(UpdateSuccessComponent, {
-        duration: 50000
+        duration: 5000
       });
     })
   }
