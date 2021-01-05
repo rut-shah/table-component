@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const path = require('path');
 const USER_DATA = __dirname + '/../user-config.json';
 const INVENTORY_DATA = __dirname + '/../inventory-data.json';
 
@@ -23,7 +24,7 @@ router.post('/api/login', (req, res, next) => {
 });
 
 router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname + '/dist/index.html'));
+  res.sendFile(path.join(__dirname + '../../../dist/index.html'));
 });
 
 router.get('/api/inventoryData', (req, res) => {
