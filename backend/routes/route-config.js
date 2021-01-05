@@ -5,6 +5,18 @@ const path = require('path');
 const USER_DATA = __dirname + '/../user-config.json';
 const INVENTORY_DATA = __dirname + '/../inventory-data.json';
 
+const allowedExt = [
+  '.js',
+  '.ico',
+  '.css',
+  '.png',
+  '.jpg',
+  '.woff2',
+  '.woff',
+  '.ttf',
+  '.svg',
+];
+
 router.post('/api/login', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -23,8 +35,10 @@ router.post('/api/login', (req, res, next) => {
   }
 });
 
+router.use(express.static(path.join(__dirname + '../../../dist/')));
+
 router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname + '../../../dist/index.html'));
+  res.sendFile('index.html', { root: path.join(__dirname + '../../../dist') });
 });
 
 router.get('/api/inventoryData', (req, res) => {
