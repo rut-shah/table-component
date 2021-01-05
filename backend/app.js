@@ -9,16 +9,16 @@ const whitelist = ['http://localhost:4200', 'https://tablecomponent.herokuapp.co
 app.use(bodyParser.json());
 app.use(helmet());
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('404 - Not found'));
-    }
-  },
-  methods: ['GET', 'POST', 'OPTIONS']
-}));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('404 - Not found'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'OPTIONS']
+// }));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
