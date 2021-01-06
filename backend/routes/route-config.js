@@ -50,11 +50,11 @@ router.get('/api/inventoryData', (req, res) => {
 });
 
 router.post('/api/updateStatus', (req, res) => {
-  const index = parseInt(req.body.index);
-  const newData = req.body.data;
+  const productId = req.body.productId;
+  const active = req.body.active;
   const data = require(INVENTORY_DATA);
 
-  data[`product${index}`] = newData;
+  data[productId].active = active;
 
   fs.writeFile(INVENTORY_DATA, JSON.stringify(data), (err) => {
     if (err) {
@@ -65,6 +65,49 @@ router.post('/api/updateStatus', (req, res) => {
     } else {
       res.status(201).json({
         message: 'Data updated successfully!'
+      });
+    }
+  });
+});
+
+router.post('/api/modifyInventory', (req, res) => {
+  const newProductData = req.body.data;
+  const data = require(INVENTORY_DATA);
+
+  data[newProductData.id] = newProductData;
+
+  fs.writeFile(INVENTORY_DATA, JSON.stringify(data), (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        message: 'Error in writing data'
+      });
+    } else {
+      res.status(201).json({
+        message: `Data ${req.body.status} successfully!`,
+        inventory: Object.values(data)
+      });
+    }
+  });
+});
+
+router.post('/api/deleteInventory', (req, res) => {
+  const productId = req.body.productId;
+  let data = require(INVENTORY_DATA);
+
+  delete data[productId];
+
+  fs.writeFile(INVENTORY_DATA, JSON.stringify(data), (err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({
+        message: 'Error in writing data'
+      });
+    } else {
+      data = require(INVENTORY_DATA);
+      res.status(201).json({
+        message: 'Data deleted successfully!',
+        inventory: Object.values(data)
       });
     }
   });

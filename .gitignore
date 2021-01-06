@@ -106,3 +106,4 @@ dist
 
 # VSCode History
 .history/
+.vscode/

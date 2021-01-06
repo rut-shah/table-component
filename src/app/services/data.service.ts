@@ -16,7 +16,15 @@ export class DataService {
     return this.httpClient.get(this.API_URL + 'inventoryData');
   }
 
+  modifyInventory(data: {}): Observable<any> {
+    return this.httpClient.post(this.API_URL + 'modifyInventory', data);
+  }
+
   updateStatus(data: {}): Observable<any> {
     return this.httpClient.post(this.API_URL + 'updateStatus', data);
+  }
+
+  deleteInventory(data: {}): Observable<any> {
+    return this.httpClient.post(this.API_URL + 'deleteInventory', data);
   }
 }

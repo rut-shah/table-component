@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateSuccessComponent } from './update-success.component';
+import { StatusUpdateComponent } from './status-update.component';
 
-describe('UpdateSuccessComponent', () => {
-  let component: UpdateSuccessComponent;
-  let fixture: ComponentFixture<UpdateSuccessComponent>;
+describe('StatusUpdateComponent', () => {
+  let component: StatusUpdateComponent;
+  let fixture: ComponentFixture<StatusUpdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateSuccessComponent ]
+      declarations: [ StatusUpdateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateSuccessComponent);
+    fixture = TestBed.createComponent(StatusUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

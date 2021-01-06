@@ -1,7 +1,87 @@
 <div class="row dashboard-container">
   <div class="col-sm-12">
-    <div class="row my-4">
+    <div class="row my-2">
       <h1 class="mx-auto">Inventory Management</h1>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-sm-12 add-inventory-container">
+        <button mat-raised-button color="primary" (click)="toggleFields()">Add an Inventory</button>
+        <form [formGroup]="addInventoryForm">
+          <div class="row add-inventory-wrapper" [ngClass]="{'animate' : showInventoryForm}">
+            <div class="col-sm-12">
+              <div class="row mt-5">
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>Product Id</mat-label>
+                    <input matInput formControlName="id">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>Product Name</mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>SKU</mat-label>
+                    <input matInput formControlName="sku">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput formControlName="price">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>Stock</mat-label>
+                    <input matInput formControlName="stock">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2">
+                  <mat-form-field>
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="active">
+                      <mat-option value="true">Active</mat-option>
+                      <mat-option value="false">Inactive</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('id')?.touched && addInventoryForm.get('id')?.errors?.required">* Please enter product id</mat-error>
+                </div>
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('name')?.touched && addInventoryForm.get('name')?.errors?.required">* Please enter product name</mat-error>
+                </div>
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('sku')?.touched && addInventoryForm.get('sku')?.errors?.required">* Please enter product SKU</mat-error>
+                </div>
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('price')?.touched && addInventoryForm.get('price')?.errors?.required">* Please enter product price</mat-error>
+                  <mat-error *ngIf="addInventoryForm.get('price')?.touched && addInventoryForm.get('price')?.errors?.pattern">* Please enter a valid product price</mat-error>
+                </div>
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('stock')?.touched && addInventoryForm.get('stock')?.errors?.required">* Please enter product stock</mat-error>
+                  <mat-error *ngIf="addInventoryForm.get('stock')?.touched && addInventoryForm.get('stock')?.errors?.pattern">* Please enter a valid number</mat-error>
+                </div>
+                <div class="col-sm-2 text-left">
+                  <mat-error *ngIf="addInventoryForm.get('active')?.touched && addInventoryForm.get('active')?.errors?.required">* Please select product status </mat-error>
+                </div>
+              </div>
+              <div class="row mt-3 button-wrapper">
+                <button class="mx-2" type="reset" mat-raised-button color="primary" [disabled]="!addInventoryForm.valid" (click)="addInventory()">Save</button>
+                <button class="mx-2" mat-raised-button color="accent" [disabled]="!addInventoryForm.touched" (click)="addInventoryForm.reset()">Reset</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="row my-4">
@@ -10,6 +90,101 @@
           <mat-label>Begin your search</mat-label>
           <input matInput (keyup)="filterData($event)" #input>
         </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="row mt-4 edit-inventory-wrapper" [ngClass]="{'animate' : showEditInventoryForm}">
+      <div class="col-sm-12">
+        <div class="row mt-2 mb-4">
+          <div class="col-sm-12">
+            <form [formGroup]="editInventoryForm">
+              <div class="row">
+                <h1 class="mx-auto">Edit Inventory Details</h1>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <mat-form-field>
+                        <mat-label>Product Id</mat-label>
+                        <input matInput formControlName="id">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-2">
+                      <mat-form-field>
+                        <mat-label>Product Name</mat-label>
+                        <input matInput formControlName="name">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-2">
+                      <mat-form-field>
+                        <mat-label>SKU</mat-label>
+                        <input matInput formControlName="sku">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-1">
+                      <mat-form-field>
+                        <mat-label>Price</mat-label>
+                        <input matInput formControlName="price">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-1">
+                      <mat-form-field>
+                        <mat-label>Stock</mat-label>
+                        <input matInput formControlName="stock">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-2">
+                      <mat-form-field>
+                        <mat-label>No of Sales</mat-label>
+                        <input matInput formControlName="noOfSales">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-2">
+                      <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="active">
+                          <mat-option value="true">Active</mat-option>
+                          <mat-option value="false">Inactive</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-2 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('id')?.touched && editInventoryForm.get('id')?.errors?.required">* Please enter product id</mat-error>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('name')?.touched && editInventoryForm.get('name')?.errors?.required">* Please enter product name</mat-error>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('sku')?.touched && editInventoryForm.get('sku')?.errors?.required">* Please enter product SKU</mat-error>
+                    </div>
+                    <div class="col-sm-1 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('price')?.touched && editInventoryForm.get('price')?.errors?.required">* Please enter product price</mat-error>
+                      <mat-error *ngIf="editInventoryForm.get('price')?.touched && editInventoryForm.get('price')?.errors?.pattern">* Please enter a valid product price</mat-error>
+                    </div>
+                    <div class="col-sm-1 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('stock')?.touched && editInventoryForm.get('stock')?.errors?.required">* Please enter product stock</mat-error>
+                      <mat-error *ngIf="editInventoryForm.get('stock')?.touched && editInventoryForm.get('stock')?.errors?.pattern">* Please enter a valid number</mat-error>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('noOfSales')?.touched && editInventoryForm.get('noOfSales')?.errors?.required">* Please enter sales data</mat-error>
+                      <mat-error *ngIf="editInventoryForm.get('noOfSales')?.touched && editInventoryForm.get('noOfSales')?.errors?.pattern">* Please enter a valid number</mat-error>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                      <mat-error *ngIf="editInventoryForm.get('active')?.touched && editInventoryForm.get('active')?.errors?.required">* Please select product status </mat-error>
+                    </div>
+                  </div>
+                  <div class="row mt-3 button-wrapper">
+                    <button class="mx-2" type="reset" mat-raised-button color="primary" [disabled]="!editInventoryForm.valid || !editInventoryForm.dirty" (click)="updateInventory()">Save</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -51,20 +226,28 @@
 
             <ng-container matColumnDef="active">
               <th mat-header-cell cdkDrag *matHeaderCellDef mat-sort-header> Product Status </th>
-              <td mat-cell *matCellDef="let element; let i = index"> 
-                <mat-select [value]="element.active" (selectionChange)="updateStatus($event, i)">
+              <td mat-cell *matCellDef="let element"> 
+                <mat-select [value]="element.active" (selectionChange)="updateStatus($event, element.id)">
                   <mat-option value="true">Active</mat-option>
                   <mat-option value="false">Inactive</mat-option>
                 </mat-select>
               </td>
             </ng-container>
 
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Modify </th>
+              <td mat-cell *matCellDef="let element; let i = index;">
+                <button class="mr-2" mat-raised-button color="accent" (click)="editInventory(element, i)">Edit</button>
+                <button class="ml-2" mat-raised-button color="warn" (click)="deleteData(element.id)">Delete</button>
+              </td>
+            </ng-container>
+
             <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No data matching the filter value of "{{input.value}}"</td>
+              <td class="mat-cell" colspan="7">No data matching the filter value of "{{input.value}}"</td>
             </tr>
         
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;" [ngClass]="{'animate-pulse' : showEditInventoryForm && i == editIndex}"></tr>
           </table>
         
           <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>

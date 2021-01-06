@@ -2,12 +2,16 @@
 @include mat-core();
 
 $omnirio-primary: mat-palette($mat-green, 900, 500, 200);
-$omnirio-accent: mat-palette($mat-indigo, A200, A100, A400);
+$omnirio-accent: mat-palette($mat-blue-grey, A200, A100, A400);
 $omnirio-warn: mat-palette($mat-red);
 
 $white: #ffffff;
+$black: #000000;
+$light-grey: #e8e8e8;
 
 $primary: mat-color($omnirio-primary);
+$accent: mat-color($omnirio-accent);
+$warn: mat-color($omnirio-warn);
 
 $omnirio-light-theme: mat-light-theme(
   $omnirio-primary,
@@ -16,7 +20,3 @@ $omnirio-light-theme: mat-light-theme(
 );
 
 @include angular-material-theme($omnirio-light-theme);
-
-.mat-snack-bar-container {
-  background: $primary;
-}

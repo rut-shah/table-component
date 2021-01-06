@@ -1,4 +1,5 @@
 export interface InventoryData {
+ id: string;
  name : string,
  sku : string,
  price : string,
