@@ -1,13 +1,6 @@
 {
-  "product1": {
-    "name": "Home Appliance",
-    "sku": "3457",
-    "price": "999",
-    "stock": "23",
-    "noOfSales": "366",
-    "active": "true"
-  },
   "product2": {
+    "id": "product2",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -16,6 +9,7 @@
     "active": "true"
   },
   "product3": {
+    "id": "product3",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -24,6 +18,7 @@
     "active": "true"
   },
   "product4": {
+    "id": "product4",
     "name": "Home Appliance",
     "sku": "3457",
     "price": "999",
@@ -32,6 +27,7 @@
     "active": "false"
   },
   "product5": {
+    "id": "product5",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -40,6 +36,7 @@
     "active": "true"
   },
   "product6": {
+    "id": "product6",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -47,15 +44,8 @@
     "noOfSales": "250",
     "active": "true"
   },
-  "product7": {
-    "name": "Home Appliance",
-    "sku": "3457",
-    "price": "999",
-    "stock": "23",
-    "noOfSales": "366",
-    "active": "false"
-  },
   "product8": {
+    "id": "product8",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -64,6 +54,7 @@
     "active": "true"
   },
   "product9": {
+    "id": "product9",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -72,6 +63,7 @@
     "active": "true"
   },
   "product10": {
+    "id": "product10",
     "name": "Home Appliance",
     "sku": "3457",
     "price": "999",
@@ -80,6 +72,7 @@
     "active": "true"
   },
   "product11": {
+    "id": "product11",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -88,6 +81,7 @@
     "active": "true"
   },
   "product12": {
+    "id": "product12",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -96,6 +90,7 @@
     "active": "true"
   },
   "product13": {
+    "id": "product13",
     "name": "Home Appliance",
     "sku": "3457",
     "price": "999",
@@ -104,6 +99,7 @@
     "active": "true"
   },
   "product14": {
+    "id": "product14",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -112,6 +108,7 @@
     "active": "true"
   },
   "product15": {
+    "id": "product15",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -120,6 +117,7 @@
     "active": "true"
   },
   "product16": {
+    "id": "product16",
     "name": "Home Appliance",
     "sku": "3457",
     "price": "999",
@@ -128,6 +126,7 @@
     "active": "true"
   },
   "product17": {
+    "id": "product17",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -136,6 +135,7 @@
     "active": "true"
   },
   "product18": {
+    "id": "product18",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
@@ -144,6 +144,7 @@
     "active": "true"
   },
   "product19": {
+    "id": "product19",
     "name": "Home Appliance",
     "sku": "3457",
     "price": "999",
@@ -152,6 +153,7 @@
     "active": "true"
   },
   "product20": {
+    "id": "product20",
     "name": "Smartphone",
     "sku": "3458",
     "price": "1999",
@@ -160,6 +162,7 @@
     "active": "true"
   },
   "product21": {
+    "id": "product21",
     "name": "Playstation",
     "sku": "3459",
     "price": "4999",
